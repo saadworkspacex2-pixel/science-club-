@@ -152,7 +152,7 @@ export default function Footer({
           style={{ color: "var(--ink-3)" }}
         >
           <p>
-            © ২০২৬ {schoolName || CLUB.full} {CLUB.sub}। সর্বস্বত্ব সংরক্ষিত।
+            © ২০২৬ {schoolName || CLUB.full} · {clubName || CLUB.name}। সর্বস্বত্ব সংরক্ষিত।
           </p>
           <p className="flex items-center gap-1.5">
             তৈরি হয়েছে <Heart className="h-3.5 w-3.5 text-red-500" /> বিজ্ঞানপ্রেম দিয়ে

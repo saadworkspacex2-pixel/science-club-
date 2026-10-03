@@ -10,9 +10,13 @@ import { ThemeToggle } from "@/components/theme";
 export default function LoginForm({
   mode,
   hint,
+  clubLogo = "",
+  clubName = "",
 }: {
   mode: "admin" | "member";
   hint?: { u: string; p: string };
+  clubLogo?: string;
+  clubName?: string;
 }) {
   const router = useRouter();
   const [username, setUsername] = useState("");
@@ -58,7 +62,8 @@ export default function LoginForm({
       </Link>
       <div className="glass-strong w-full max-w-md rounded-[2rem] p-8 shadow-[var(--shadow-lift)] sm:p-10" style={{ animation: "loginIn .7s cubic-bezier(.22,1,.36,1) both" }}>
         <div className="mb-8 flex flex-col items-center text-center">
-          <span className="float-soft"><Logo size={56} /></span>
+          <span className="float-soft"><Logo size={56} src={clubLogo} alt={clubName || "ক্লাব লোগো"} /></span>
+          {clubName && <p className="mt-3 text-[13px] font-semibold" style={{ color: "var(--ink-2)" }}>{clubName}</p>}
           <h1 className="mt-5 text-[22px] font-bold tracking-tight">
             {mode === "admin" ? "অ্যাডমিন প্যানেল" : "সদস্য লগইন"}
           </h1>

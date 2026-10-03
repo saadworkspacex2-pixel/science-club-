@@ -22,7 +22,7 @@ import {
   X,
   Globe,
   Bell,
-  Palette,
+  Settings,
 } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { ThemeToggle } from "@/components/theme";
@@ -42,7 +42,7 @@ export const NAV_ITEMS = [
   { href: "/admin/news", label: "সংবাদ", icon: Newspaper },
   { href: "/admin/events", label: "ইভেন্ট", icon: Calendar },
   { href: "/admin/messages", label: "বার্তা", icon: Bell },
-  { href: "/admin/branding", label: "ব্র্যান্ডিং ও লোগো", icon: Palette },
+  { href: "/admin/settings", label: "সাইট সেটিংস", icon: Settings },
   { href: "/admin/users", label: "ব্যবহারকারী", icon: ShieldCheck },
 ];
 
@@ -51,11 +51,15 @@ export default function AdminShell({
   userName,
   role,
   pending,
+  clubLogo = "",
+  clubName = "",
 }: {
   children: ReactNode;
   userName: string;
   role: string;
   pending: number;
+  clubLogo?: string;
+  clubName?: string;
 }) {
   const pathname = usePathname();
   const router = useRouter();
@@ -101,11 +105,11 @@ export default function AdminShell({
       {/* Sidebar - desktop */}
       <aside className="glass-strong sticky top-0 hidden h-dvh w-64 shrink-0 flex-col border-r lg:flex" style={{ borderRadius: 0 }}>
         <div className="flex items-center gap-2.5 px-5 py-5">
-          <Logo size={34} />
-          <div className="leading-tight">
+          <Logo size={34} src={clubLogo} alt={clubName || "ক্লাব লোগো"} />
+          <div className="min-w-0 leading-tight">
             <p className="text-[15px] font-bold">অ্যাডমিন প্যানেল</p>
-            <p className="text-[10.5px]" style={{ color: "var(--ink-3)" }}>
-              বিউএসএস সাইেন্স ক্লাব
+            <p className="truncate text-[10.5px]" style={{ color: "var(--ink-3)" }}>
+              {clubName || "বিউএসএস সাইেন্স ক্লাব"}
             </p>
           </div>
         </div>
@@ -122,9 +126,15 @@ export default function AdminShell({
         <div className="fixed inset-0 z-50 lg:hidden">
           <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" onClick={() => setOpen(false)} />
           <aside className="glass-strong absolute left-0 top-0 flex h-dvh w-72 flex-col" style={{ borderRadius: 0 }}>
-            <div className="flex items-center justify-between px-5 py-5">
-              <p className="text-[15px] font-bold">অ্যাডমিন প্যানেল</p>
-              <button onClick={() => setOpen(false)} aria-label="বন্ধ">
+            <div className="flex items-center gap-2.5 px-5 py-5">
+              <Logo size={32} src={clubLogo} alt={clubName || "ক্লাব লোগো"} />
+              <div className="min-w-0 leading-tight">
+                <p className="text-[15px] font-bold">অ্যাডমিন প্যানেল</p>
+                <p className="truncate text-[10px]" style={{ color: "var(--ink-3)" }}>
+                  {clubName || "বিউএসএস সাইেন্স ক্লাব"}
+                </p>
+              </div>
+              <button className="ml-auto" onClick={() => setOpen(false)} aria-label="বন্ধ">
                 <X className="h-5 w-5" />
               </button>
             </div>

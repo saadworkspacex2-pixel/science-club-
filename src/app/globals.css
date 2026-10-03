@@ -11,8 +11,8 @@
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
   --color-line: var(--line);
-  --font-sans: "Hind Siliguri", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Noto Serif Bengali", "Hind Siliguri", serif;
+  --font-sans: var(--site-font-sans, "Hind Siliguri", ui-sans-serif, system-ui, sans-serif);
+  --font-display: var(--site-font-display, "Noto Serif Bengali", "Hind Siliguri", serif);
 }
 
 @theme {

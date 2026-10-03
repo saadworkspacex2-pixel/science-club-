@@ -1,7 +1,7 @@
-import BrandingManager from "@/components/admin/branding-manager";
+import { redirect } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
-export default function AdminBrandingPage() {
-  return <BrandingManager />;
+export default function LegacyAdminBrandingPage() {
+  redirect("/admin/settings");
 }
